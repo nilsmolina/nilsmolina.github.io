@@ -260,3 +260,7 @@ tt {
   margin: 0 -10px;
   border-radius: 10px;
 }
+
+.markdown pre code {
+  font-size: 90%;
+}

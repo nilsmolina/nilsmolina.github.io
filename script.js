@@ -4,21 +4,17 @@
 
 // configuration
 var PREVIEW = document.location.protocol == 'file:';
-var SEMESTER = 'Fall 2014';
-var AUTHORS = ‘Created by ExarionU’;
-var HOME = 'http://stellar.mit.edu/S/course/6/fa14/6.005/';
+var SEMESTER = 'Jan 2015';
+//var HOME = 'http://stellar.mit.edu/S/course/6/fa14/6.005/';
 
 // load jQuery, run setup, load other dependencies, and render
 require('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', function () {
-  // future calls to require can use relative paths
-  require.abspath = $('script[src*=handout-script]').attr('src').match(/.*\//)[0];
-  
   setup();
   
   var stages = [
-    [ './markdown/Markdown.Converter.js',
+    [ 'http://web.mit.edu/6.005/www/fa14/web/markdown/Markdown.Converter.js',
       'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' ],
-    [ './markdown/Markdown.Extra.js' ],
+    [ 'http://web.mit.edu/6.005/www/fa14/web/markdown/Markdown.Extra.js' ],
   ];
   (function next() {
     var scripts = stages.shift();
@@ -53,13 +49,11 @@ function require(url, callback) {
 // perform setup that depends only on jQuery
 function setup() {
   // header link
-  $('header').html(function() {
-    return $('<a>').attr('href', HOME).html(this.innerHTML);
-  });
+  //$('header').html(function() {
+  //  return $('<a>').attr('href', HOME).html(this.innerHTML);
+  //});
   // semester header
   $('header').append($('<div>').text(SEMESTER));
-  // copyright footer
-  $('footer:contains("\u00a9")').addClass('col-sm-2 footer-margin').html($('<div>').html(AUTHORS));
   // page title
   var title = $('head title').text();
   $('.container').first().prepend($('<h1>').text(title));
@@ -126,7 +120,7 @@ function render() {
   
   // syntax highlight code
   if ($('code[class^=language]').length > 0) {
-    require('./highlight/highlight.pack.js', function() {
+    require('http://web.mit.edu/6.005/www/fa14/web/highlight/highlight.pack.js', function() {
       hljs.initHighlightingOnLoad();
     });
   }
